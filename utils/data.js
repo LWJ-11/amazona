@@ -1,5 +1,5 @@
 const data = {
-    product: [
+    products: [
         {
             name: 'Free Shirt',
             slug: 'free-shirt',
@@ -9,7 +9,8 @@ const data = {
             rating: 4.5,
             numReviews: 8,
             countInStock: 20,
-            description: 'A popular shirt'
+            description: 'A popular shirt',
+            price: 80
         },
         {
             name: 'Fit Shirt',
@@ -20,7 +21,8 @@ const data = {
             rating: 4.5,
             numReviews: 8,
             countInStock: 20,
-            description: 'A popular shirt'
+            description: 'A popular shirt',
+            price: 180
         },
         {
             name: 'Slim Shirt',
@@ -31,7 +33,8 @@ const data = {
             rating: 4.5,
             numReviews: 8,
             countInStock: 20,
-            description: 'A popular shirt'
+            description: 'A popular shirt',
+            price: 70
         },
         {
             name: 'Golf Pants',
@@ -42,7 +45,8 @@ const data = {
             rating: 4.5,
             numReviews: 8,
             countInStock: 20,
-            description: 'A popular pants'
+            description: 'A popular pants',
+            price: 90
         },
         {
             name: 'Fit Pants',
@@ -53,7 +57,8 @@ const data = {
             rating: 4.5,
             numReviews: 8,
             countInStock: 20,
-            description: 'A popular shirt'
+            description: 'A popular shirt',
+            price: 200
         },
     ],
 };
