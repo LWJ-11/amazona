@@ -31,6 +31,13 @@ a {
   @apply object-contain h-60 w-96 
 }
 
+input,
+select,
+textarea{
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
