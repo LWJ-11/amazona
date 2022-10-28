@@ -17,8 +17,19 @@ export default function CartScreen() {
         dispatch({
             type: 'CART_REMOVE_ITEM',
             payload: cartItem
-        })
-    }
+        });
+    };
+
+    const updateCartHandler = (item, qty) =>{
+        const quantity = Number(qty);
+        dispatch({
+            type: 'CART_ADD_ITEM',
+            payload:{
+                ...item,
+                quantity
+            }
+        });
+    };
 
     const cartItemElement = cartItems.map((cartItem) => {
         return(
@@ -38,7 +49,15 @@ export default function CartScreen() {
                         </a>
                     </Link>
                 </td>
-                <td className='p-5 text-right'>{cartItem.quantity}</td>
+                <td className='p-5 text-right'>
+                    <select value={cartItem.quantity} onChange={(e) => updateCartHandler(cartItem, e.target.value)}>
+                        {[...Array(cartItem.countInStock).keys()].map(x => (
+                            <option key={x+1} value={x+1}>
+                                {x+1}
+                            </option>
+                        ))}
+                    </select>
+                </td>
                 <td className='p-5 text-right'>${cartItem.price}</td>
                 <td className='p-5 text-center'>
                     <button onClick={()=>removeỈtemHandler(cartItem)}>
@@ -55,7 +74,7 @@ export default function CartScreen() {
         {
             cartItems.length === 0 ?
             (<div>
-                Cart is empty. <Link href="/">Go shopping</Link>
+                Cart is empty. <Link href="/" legacyBehavior><a className='text-black font-bold'>Go shopping</a></Link>
             </div>)
             : (
                 <div className='grid md:grid-cols-4 md:gap-5'>
