@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import React,{useContext} from 'react'
 import Layout from '../../components/Layout'
 import data from '../../utils/data';
@@ -10,6 +10,7 @@ export default function ProductScreen() {
     const {state, dispatch} = useContext(Store)
     
     const {query} = useRouter();
+    const router = useRouter();
     const {slug} = query;
     const product = data.products.find(x => x.slug === slug);
     if(!product){
@@ -30,6 +31,7 @@ export default function ProductScreen() {
                 quantity
             }
         });
+        router.push('/cart');
     };
   return (
     <div>
