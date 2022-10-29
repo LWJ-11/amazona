@@ -1,4 +1,20 @@
+
+
 const data = {
+    users: [
+        {
+            name: 'Duy',
+            email: 'admin@a.com',
+            password:'123456',
+            isAdmin:true,
+        },
+        {
+            name: 'Bao',
+            email: 'user@example.com',
+            password:'123456',
+            isAdmin:false,
+        },
+    ],
     products: [
         {
             name: 'Free Shirt',
