@@ -37,6 +37,10 @@ textarea{
   @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
 }
 
+.dropdown-link{
+  @apply flex p-2 hover:bg-gray-200;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

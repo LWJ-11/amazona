@@ -24,14 +24,23 @@ function reducer(state, action){
             : [...state.cart.cartItems, newItem];
             Cookies.set('cart', JSON.stringify({...state.cart, cartItems}))
             return {...state, cart:{...state.cart, cartItems}}
-        }
+        };
         case 'CART_REMOVE_ITEM':{
             const cartItems = state.cart.cartItems.filter(
                 (cartItem) => cartItem.slug !== action.payload.slug
             );
             Cookies.set('cart', JSON.stringify({...state.cart, cartItems}))
             return {...state, cart:{...state.cart, cartItems}}
-        }
+        };
+        case 'CART_REST':
+            return{
+                ...state,
+                cart:{
+                    cartItems:[],
+                    shippingAddress:{location:{}},
+                    paymentMethod:''
+                },
+            };
         default: 
             return state;
     }
