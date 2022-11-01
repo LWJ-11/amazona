@@ -1,9 +1,26 @@
 import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { signIn } from 'next-auth/react';
+import { getError } from '../utils/error';
+import { toast } from 'react-toastify';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import bcryptjs from 'bcryptjs'
 
 export default function LoginScreen() {
+
+    const router = useRouter();
+    const {redirect} =router.query;
+    const { data: session } = useSession();
+
+    useEffect(()=>{
+        if(session?.user){
+            router.push(redirect || '/')
+        }
+    },[router, session, redirect]);
 
     const{
         handleSubmit,
@@ -11,8 +28,20 @@ export default function LoginScreen() {
         formState:{errors},
     } = useForm();
 
-    const submitHandler = (email, password) => {
-        console.log(email,password);
+    const submitHandler = async ({email, password}) => {
+        try{
+            const result = await signIn('credentials',{
+                redirect: false,
+                email,
+                password,
+            });
+            if(result.error){
+                toast.error(result.error);
+            }
+        } catch(err){
+            toast.error(getError(err));
+        }
+        console.log(email,bcryptjs.hashSync(password))
     }
 
   return (
