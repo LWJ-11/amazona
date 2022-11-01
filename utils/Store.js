@@ -58,7 +58,7 @@ function reducer(state, action){
                 ...state,
                 shippingAddress:{
                     ...state.cart,
-                    paymentMethod: action.payload,
+                    paymentMethod: action.payload, 
                 }
             }
         default: 
